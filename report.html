@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extension Roll Call: audit report</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon48.png" alt="" width="40" height="40">
+      <div>
+        <h1>Extension Roll Call</h1>
+        <p class="sub" id="meta">Reading installed extensions…</p>
+      </div>
+    </div>
+    <div class="actions no-print">
+      <button id="refresh" type="button">Refresh</button>
+      <button id="csv" type="button">Export CSV</button>
+      <button id="json" type="button">Export JSON</button>
+      <button id="print" type="button" class="primary">Print or save as PDF</button>
+    </div>
+  </header>
+
+  <section class="label-row no-print">
+    <label for="label">Audit label</label>
+    <input id="label" type="text" maxlength="80" placeholder="For example: Accounts PC 3, or Priya's laptop" autocomplete="off">
+    <span class="hint">Shown on the report and in the CSV, so you can tell machines apart.</span>
+  </section>
+  <p class="print-only" id="print-label"></p>
+
+  <section class="tiles" id="tiles" aria-label="Summary"></section>
+
+  <section class="controls no-print" aria-label="Filters">
+    <input id="search" type="search" placeholder="Search by name, permission or ID" autocomplete="off">
+    <label>Risk
+      <select id="level">
+        <option value="all">All levels</option>
+        <option value="Critical">Critical</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </label>
+    <label class="check"><input id="show-disabled" type="checkbox" checked> Show disabled</label>
+    <span class="count" id="count"></span>
+  </section>
+
+  <div class="table-wrap">
+    <table id="table">
+      <thead>
+        <tr>
+          <th scope="col"><button type="button" class="sort" data-sort="name">Extension</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="status">Status</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="source">Source</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="access">Site access</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="score">Risk</button></th>
+          <th scope="col" class="no-print">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p class="empty" id="empty" hidden>No extensions match these filters.</p>
+  <p class="toast no-print" id="toast" role="status" hidden></p>
+
+  <footer>
+    <h2>How the rating works</h2>
+    <p>The score adds up three things: which websites an extension can run on, which browser features it can use, and where it was installed from. 0 to 14 is Low, 15 to 34 Medium, 35 to 59 High, and 60 or more Critical.</p>
+    <p><strong>A high rating means powerful access, not that the extension is harmful.</strong> A password manager needs wide access to do its job. Use the rating to decide which extensions to look at first.</p>
+    <p>This report covers the browser profile it was run in. Nothing leaves this computer: the tool makes no network requests and stores only the audit label, on this device.</p>
+  </footer>
+
+  <script type="module" src="report.js"></script>
+</body>
+</html>

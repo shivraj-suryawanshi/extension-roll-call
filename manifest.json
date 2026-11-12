@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Extension Roll Call",
+  "short_name": "Roll Call",
+  "version": "1.0.0",
+  "description": "Lists every extension in this browser, explains what each can access, rates the risk, and exports the audit as CSV or PDF.",
+  "minimum_chrome_version": "102",
+  "permissions": ["management"],
+  "action": {
+    "default_title": "Extension Roll Call",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
